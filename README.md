@@ -1,68 +1,74 @@
 # ReviewPlatform
-🚀 Overview
 
-ReviewPlatform is a user-friendly review and rating system where users can:
+## 🚀 Overview
 
-✔ Browse shops & cafes
-✔ View ratings, reviews, and average score
-✔ Add reviews with comments
-✔ Upvote or downvote reviews (1 vote per user)
-✔ Filter by category
-✔ Search shops
-✔ Sort based on rating, review count, or newly added
-✔ Use pagination for smoother browsing
-✔ Register/Login to interact
-✔ Admin-only features: Add, Update, Delete shops
+ReviewPlatform is a user-friendly review and rating system that enables
+users to explore shops and cafés, read and write reviews, and interact
+through voting.
 
-Built using Django, Bootstrap, jQuery, and SQLite.
+**Tech Stack:** Django · Bootstrap · jQuery · SQLite
 
-🧩 Features
-🏪 Shop Management
+------------------------------------------------------------------------
 
-List all shops with categories & locations
+## 🧩 Key Features
 
-Admin-only: Add, Update, Delete shops
+### 🏪 Shop Management
 
-Prevents duplicate shops (same name + location)
+-   View all shops with categories and locations\
+-   **Admin-only:** Add, update, and delete shops\
+-   Duplicate prevention based on *shop name + location*
 
-⭐ Review & Rating System
+### ⭐ Review & Rating System
 
-Users can post detailed reviews
+-   Users can post detailed reviews\
+-   1--5 star rating system\
+-   AJAX-based live upvote/downvote\
+-   Contradictory or duplicate votes prevented\
+-   Displays total score (upvotes − downvotes)
 
-1–5 star rating system
+### 🔍 Search & Filtering
 
-Live upvote/downvote using AJAX
+-   Search shops by name\
+-   Filter by category\
+-   Combine search + category\
+-   Sorting options:
+    -   ⭐ Highest Rating\
+    -   📝 Most Reviewed\
+    -   🆕 Newly Added
 
-Prevent duplicate or contradictory votes
+### 📄 Pagination
 
-Shows total score (upvotes - downvotes)
+-   Shops displayed in batches of 5 for smooth browsing
 
-🔍 Search & Filtering
+### 🔐 Authentication
 
-Search shops by name
+-   User registration\
+-   Login / Logout\
+-   Restricted interactions for unauthenticated users\
+-   Admin privileges for shop management
 
-Filter shops by category
+------------------------------------------------------------------------
 
-Combine search + category
+## 📁 Project Structure (Highlighted)
 
-Sorting options:
+    ReviewPlatform/
+    ├── shops/                # Shop & review app
+    ├── templates/            # HTML templates
+    ├── static/               # CSS, JS, Images
+    ├── ReviewPlatform/       # Django project configuration
+    └── db.sqlite3            # Database
 
-⭐ Highest Rating
+------------------------------------------------------------------------
 
-📝 Most Reviewed
+## 🚧 Future Enhancements
 
-🆕 Newly Added
+-   Add user profiles\
+-   Implement review images\
+-   Google Maps integration for shop location\
+-   API endpoints for external integration
 
-📄 Pagination
+------------------------------------------------------------------------
 
-Shops displayed in 5-per-page chunks
+## 📜 License
 
-🔐 Authentication
-
-User registration
-
-Login / Logout
-
-Authentication for reviews & votes
-
-Admin privileges for shop management
+This project is licensed for educational and learning purposes.
