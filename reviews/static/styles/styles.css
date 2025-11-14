@@ -1,0 +1,15 @@
+.sort{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.counting{
+    display: flex !important;
+    align-items: center;
+    gap: 10px; /* space between items */
+}
+.total_count{
+    margin-top: 0.7em;
+    font-size: 20px;
+}

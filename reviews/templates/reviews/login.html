@@ -1,0 +1,17 @@
+{% extends "reviews/base.html" %}
+
+{% block content %}
+<h2>Login</h2>
+<form method="post" autocomplete="off">
+    {% csrf_token %}
+    <div class="form-group mt-3">
+        <label for="exampleUsername1">Username</label>
+        <input type="text" name="username" class="form-control" placeholder="Username" autocomplete="new-username" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" name="password" placeholder="Password" class="form-control" autocomplete="new-password" required>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Login</button>
+</form>
+{% endblock %}

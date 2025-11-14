@@ -1,0 +1,85 @@
+{% extends "reviews/base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+    <h2>{{ shop.name }}</h2>
+    <p>Category: {{ shop.get_category_display }}</p>
+    <p>Location: {{ shop.location }}</p>
+    <hr>
+    <h2>Reviews</h2>
+    {% if reviews %}
+    {% for review in reviews %}
+    <div class="border p-2 mb-2 w-auto">
+        <div>
+            <strong>{{ review.user.username }}</strong><br>
+            <span>Rating: {{ review.rating }} <br>
+                {{ review.comment }}
+            </span>
+        </div>
+
+        <div class="counting">
+            <button class="btn btn-light vote-btn up {% if user_upv %}active{% endif %}" data-id="{{ review.id }}">👆</button>
+            <p class="total_count">{{ review.total_votes }}</p>
+            <button class="btn btn-light vote-btn down {% if user_dnv %}active{% endif %}" data-id="{{ review.id }}">👇</button>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% else %}
+    <p>No reviews yet. Be the first to add one!</p>
+    {% endif %}
+    
+    {% if user.is_authenticated %}
+    <h2>Add Review</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="number" name="rating" class="form-control" min="1" max="5" required>
+        </div>
+        <div class="mb-3">
+            <input type="text" name="comment" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <input type="submit" class="btn btn-success">
+        </div>
+    </form>
+    {% else %}
+    <div class="mb-3">
+        <p><a href="/login/">Login</a> to add a review!</p>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+    $(document).ready(function(){
+        $(".up").click(function(){
+            let idt = $(this).data("id");
+            let counter = $(this).siblings(".total_count");
+            let up = $(this)
+            let down = $(this).siblings(".down")
+            $.get(`/review/${idt}/upvote/`, function(response){
+                counter.text(response.total);
+                up.toggleClass('active',response.upv)
+                down.removeClass('active',response.dnv)
+            });
+        });
+        
+        $(".down").click(function(){
+            let idt = $(this).data("id");
+            let counter = $(this).siblings(".total_count");
+            let down = $(this)
+            let up = $(this).siblings(".up")
+            let check = parseInt(counter.text()) || 0;
+            if(check <= 0){
+                counter.text(check);
+            }
+        
+            $.get(`/review/${idt}/downvote/`, function(response){
+                counter.text(response.total);
+                down.toggleClass('active',response.dnv)
+                up.removeClass('active',response.upv)
+            });
+        });
+    });
+</script>
+{% endblock %}

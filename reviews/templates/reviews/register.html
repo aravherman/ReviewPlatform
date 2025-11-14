@@ -1,0 +1,26 @@
+{% extends "reviews/base.html" %}
+
+{% block content %}
+<h2>Register</h2>
+<form method="post" autocomplete="off">
+    {% csrf_token %}
+    <div class="form-group mt-3">
+        <label for="exampleUsername1">Username</label>
+        <input type="text" name="username" placeholder="Username" class="form-control" required>
+    </div>
+    <div class="form-group mt-3">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" name="password1" placeholder="Password" class="form-control" required>
+    </div>
+    <div class="form-group mt-3">
+        <label for="exampleInputPassword1">Confirm Password</label>
+        <input type="password" name="password2" placeholder="Confirm Password" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3" value="Register">Register</button>
+    {% if error %}
+    <div class=" mt-2 alert alert-danger">
+        {{ error }}
+    </div>
+    {% endif %}
+</form>
+{% endblock %}

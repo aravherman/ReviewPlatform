@@ -1,0 +1,57 @@
+{% extends "reviews/base.html" %}
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-4 text-center">Shops & Cafes</h2>
+  <form method="get" class="mb-4">
+    <div class="input-group mb-4">
+      <input type="text" placeholder="Search anything...." name="search" class="form-control" value="{{ request.GET.search }}">
+      <select class="form-select" name="category">
+        <option value="category">All Categories</option>
+        {% for key, value in categories %}
+        <option value="{{ key }}" {% if request.GET.category == key %}selected{% endif %}>{{ value }}</option>
+        {% endfor %}
+      </select>
+      <input type="submit" value="Search" class="btn btn-primary">
+      </div>
+      <div class="sort">
+        <h3>Available Shops</h3>
+        <select class="sort" name="sort" onchange="this.form.submit()">
+          <option value="">Sort</option>
+          <option value="desc-rating"{% if request.GET.sort == 'desc-rating' %}selected{% endif %}>Rating(High to Low)</option>
+          <option value="desc-review"{% if request.GET.sort == 'desc-review' %}selected{% endif %}>Most Reviewed</option>
+          <option value="new"{% if request.GET.sort == 'new' %}selected{% endif %}>Newly added</option>
+        </select>
+      </div>
+  </form>
+  <div class="row">
+    {% for shop in sh %}
+    <div class="col-md-4 mb-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">{{ shop.name }}</h5>
+          <p class="card-text">
+            Category: {{ shop.get_category_display }} <br>
+            📍 Location: {{ shop.location }} <br>
+            ⭐ Average Rating: {{ shop.avg_rating|default:"No ratings yet" }}
+          </p>
+          <a href="{% url 'shop_detail' shop.id %}" class="btn btn-primary">View Reviews</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+    <center>
+      {% if sh.has_previous %}
+          <a href="?page={{ sh.previous_page_number }}&search={{ request.GET.search }}&category={{ request.GET.category }}&sort={{ request.GET.sort }}"><</a>
+      {% endif %}
+  
+      <span class="current">
+          Page {{ sh.number }} of {{ sh.paginator.num_pages }}
+      </span>
+  
+      {%if sh.has_next %}
+          <a href="?page={{ sh.next_page_number }}&search={{ request.GET.search }}&category={{ request.GET.category }}&sort={{ request.GET.sort }}">></a>
+      {% endif %}
+    </center>
+  </div>
+{% endblock %}
