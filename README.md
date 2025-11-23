@@ -14,26 +14,26 @@ through voting.
 
 ### 🏪 Shop Management
 
--   View all shops with categories and locations\
--   **Admin-only:** Add, update, and delete shops\
+-   View all shops with categories and locations
+-   **Admin-only:** Add, update, and delete shops
 -   Duplicate prevention based on *shop name + location*
 
 ### ⭐ Review & Rating System
 
--   Users can post detailed reviews\
--   1--5 star rating system\
--   AJAX-based live upvote/downvote\
--   Contradictory or duplicate votes prevented\
+-   Users can post detailed reviews
+-   1--5 star rating system
+-   AJAX-based live upvote/downvote
+-   Contradictory or duplicate votes prevented
 -   Displays total score (upvotes − downvotes)
 
 ### 🔍 Search & Filtering
 
--   Search shops by name\
--   Filter by category\
--   Combine search + category\
+-   Search shops by name
+-   Filter by category
+-   Combine search + category
 -   Sorting options:
-    -   ⭐ Highest Rating\
-    -   📝 Most Reviewed\
+    -   ⭐ Highest Rating
+    -   📝 Most Reviewed
     -   🆕 Newly Added
 
 ### 📄 Pagination
@@ -42,9 +42,9 @@ through voting.
 
 ### 🔐 Authentication
 
--   User registration\
--   Login / Logout\
--   Restricted interactions for unauthenticated users\
+-   User registration
+-   Login / Logout
+-   Restricted interactions for unauthenticated users
 -   Admin privileges for shop management
 
 ------------------------------------------------------------------------
@@ -62,9 +62,9 @@ through voting.
 
 ## 🚧 Future Enhancements
 
--   Add user profiles\
--   Implement review images\
--   Google Maps integration for shop location\
+-   Add user profiles
+-   Implement review images
+-   Google Maps integration for shop location
 -   API endpoints for external integration
 
 ------------------------------------------------------------------------
